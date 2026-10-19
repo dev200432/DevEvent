@@ -1,0 +1,163 @@
+
+{% extends 'base.html' %}
+
+{% block title %}My Registrations - DevEvent{% endblock %}
+
+{% block content %}
+
+<section class="events-section py-5">
+    <div class="container">
+
+        <!-- Page Heading -->
+        <div class="mb-5">
+            <h1 class="fw-bold">My Registrations</h1>
+
+            <p class="text-muted">
+                View and manage all the events you have registered for.
+            </p>
+
+            <a href="{% url 'home' %}"
+               class="btn btn-outline-primary rounded-pill">
+                ← Explore Events
+            </a>
+        </div>
+
+        <!-- Registration List -->
+        {% if registrations %}
+
+            <div class="row g-4">
+
+                {% for registration in registrations %}
+
+                    <div class="col-md-6 col-lg-4">
+
+                        <div class="card event-card h-100 border-0 shadow-sm">
+
+                            <div class="card-body p-4 d-flex flex-column">
+
+                                <!-- Category -->
+                                <div class="mb-3">
+                                    <span class="badge bg-primary">
+                                        {{ registration.event.get_category_display }}
+                                    </span>
+                                </div>
+
+                                <!-- Event Name -->
+                                <h4 class="card-title fw-bold">
+                                    {{ registration.event.event_name }}
+                                </h4>
+
+                                <!-- Event Date -->
+                                <p class="text-muted mb-2">
+                                    📅 <strong>Date:</strong>
+                                    {{ registration.event.event_date|date:"d M Y" }}
+                                </p>
+
+                                <!-- Event Time -->
+                                <p class="text-muted mb-2">
+                                    🕒 <strong>Time:</strong>
+                                    {{ registration.event.start_time|time:"h:i A" }}
+                                </p>
+
+                                <!-- Event Location -->
+                                <p class="text-muted mb-3">
+                                    📍 <strong>Location:</strong>
+                                    {{ registration.event.location }}
+                                </p>
+
+                                <!-- Registration Date -->
+                                <p class="mb-3">
+                                    <strong>Registration Date:</strong>
+                                    <br>
+                                    <span class="text-muted">
+                                        {{ registration.registration_date|date:"d M Y, h:i A" }}
+                                    </span>
+                                </p>
+
+                                <!-- Registration Status -->
+                                <p class="mb-4">
+                                    <strong>Status:</strong>
+
+                                    {% if registration.status == 'registered' %}
+                                        <span class="badge bg-success ms-1">
+                                            Registered
+                                        </span>
+                                    {% else %}
+                                        <span class="badge bg-danger ms-1">
+                                            Cancelled
+                                        </span>
+                                    {% endif %}
+                                </p>
+
+                                <!-- Action Buttons -->
+                                <div class="mt-auto">
+
+                                    <a href="{% url 'event_detail' registration.event.id %}"
+                                       class="btn btn-primary w-100 mb-2">
+                                        View Event →
+                                    </a>
+
+                                    {% if registration.status == 'registered' %}
+
+                                        <form method="POST"
+                                              action="{% url 'cancel_registration' registration.id %}"
+                                              onsubmit="return confirm('Are you sure you want to cancel this registration?');">
+
+                                            {% csrf_token %}
+
+                                            <button type="submit"
+                                                    class="btn btn-outline-danger w-100">
+                                                Cancel Registration
+                                            </button>
+
+                                        </form>
+
+                                    {% else %}
+
+                                        <span class="badge bg-secondary w-100 p-2">
+                                            Registration Cancelled
+                                        </span>
+
+                                    {% endif %}
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        {% else %}
+
+            <!-- Empty State -->
+            <div class="text-center py-5">
+
+                <div style="font-size: 70px;">🎫</div>
+
+                <h3 class="fw-bold mt-3">
+                    No Registrations Yet
+                </h3>
+
+                <p class="text-muted">
+                    You haven't registered for any events yet.
+                    Explore our events and reserve your seat!
+                </p>
+
+                <a href="{% url 'home' %}"
+                   class="btn btn-primary btn-lg rounded-pill px-4">
+                    Browse Events →
+                </a>
+
+            </div>
+
+        {% endif %}
+
+    </div>
+</section>
+
+{% endblock %}

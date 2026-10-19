@@ -1,0 +1,464 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin Dashboard - DevEvent{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid py-4">
+
+    <!-- Dashboard Heading -->
+    <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
+        <div>
+            <h1 class="fw-bold mb-1">Admin Dashboard</h1>
+            <p class="text-muted mb-0">
+                Welcome to DevEvent Event Management System
+            </p>
+        </div>
+
+        <a href="{% url 'home' %}" class="btn btn-outline-primary">
+            🌐 View Website
+        </a>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="card border-0 shadow-sm mb-4">
+        <div class="card-header bg-white py-3">
+            <h5 class="mb-0 fw-bold">⚡ Quick Actions</h5>
+        </div>
+
+        <div class="card-body">
+            <div class="row g-3">
+
+                <div class="col-md-4 col-lg">
+                    <a href="/admin/events/event/add/"
+                       class="btn btn-primary w-100 py-3">
+                        ➕ Add Event
+                    </a>
+                </div>
+
+                <div class="col-md-4 col-lg">
+                    <a href="/admin/events/event/"
+                       class="btn btn-outline-primary w-100 py-3">
+                        📅 Manage Events
+                    </a>
+                </div>
+
+                <div class="col-md-4 col-lg">
+                    <a href="/admin/auth/user/"
+                       class="btn btn-outline-success w-100 py-3">
+                        👥 Manage Users
+                    </a>
+                </div>
+
+                <div class="col-md-4 col-lg">
+                    <a href="/admin/"
+                       class="btn btn-outline-dark w-100 py-3">
+                        ⚙️ Django Admin
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard Statistics -->
+    <div class="row g-4 mb-4">
+
+        <!-- Total Events -->
+        <div class="col-md-6 col-xl">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                    <div class="text-muted mb-2">Total Events</div>
+                    <h2 class="fw-bold text-primary mb-0">
+                        {{ total_events }}
+                    </h2>
+                    <small class="text-muted">All events</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total Users -->
+        <div class="col-md-6 col-xl">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                    <div class="text-muted mb-2">Total Users</div>
+                    <h2 class="fw-bold text-success mb-0">
+                        {{ total_users }}
+                    </h2>
+                    <small class="text-muted">Registered users</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total Registrations -->
+        <div class="col-md-6 col-xl">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                    <div class="text-muted mb-2">Total Registrations</div>
+                    <h2 class="fw-bold text-info mb-0">
+                        {{ total_registrations }}
+                    </h2>
+                    <small class="text-muted">All registration records</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Active Registrations -->
+        <div class="col-md-6 col-xl">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                    <div class="text-muted mb-2">Active Registrations</div>
+                    <h2 class="fw-bold text-success mb-0">
+                        {{ active_registrations }}
+                    </h2>
+                    <small class="text-muted">Currently registered</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cancelled Registrations -->
+        <div class="col-md-6 col-xl">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                    <div class="text-muted mb-2">Cancelled Registrations</div>
+                    <h2 class="fw-bold text-danger mb-0">
+                        {{ cancelled_registrations }}
+                    </h2>
+                    <small class="text-muted">Cancelled records</small>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Event Management -->
+    <div class="card border-0 shadow-sm mb-4">
+
+        <div class="card-header bg-white py-3">
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+                <div>
+                    <h5 class="fw-bold mb-1">📅 Event Management</h5>
+                    <p class="text-muted mb-0 small">
+                        Search, filter and manage your events
+                    </p>
+                </div>
+
+                <a href="/admin/events/event/add/"
+                   class="btn btn-primary btn-sm">
+                    ➕ Add New Event
+                </a>
+            </div>
+        </div>
+
+        <!-- Search and Filter Form -->
+        <div class="card-body border-bottom">
+
+            <form method="GET" action="{% url 'dashboard_home' %}">
+
+                <div class="row g-3 align-items-end">
+
+                    <!-- Search Event -->
+                    <div class="col-md-5">
+                        <label for="search" class="form-label fw-semibold">
+                            Search Event
+                        </label>
+
+                        <input
+                            type="text"
+                            name="search"
+                            id="search"
+                            class="form-control"
+                            placeholder="Enter event name..."
+                            value="{{ search_query }}"
+                        >
+                    </div>
+
+                    <!-- Category Filter -->
+                    <div class="col-md-4">
+                        <label for="category" class="form-label fw-semibold">
+                            Filter by Category
+                        </label>
+
+                        <select
+                            name="category"
+                            id="category"
+                            class="form-select"
+                        >
+                            <option value="">All Categories</option>
+
+                            {% for value, label in categories %}
+                                <option
+                                    value="{{ value }}"
+                                    {% if selected_category == value %}selected{% endif %}
+                                >
+                                    {{ label }}
+                                </option>
+                            {% endfor %}
+
+                        </select>
+                    </div>
+
+                    <!-- Buttons -->
+                    <div class="col-md-3">
+                        <button type="submit"
+                                class="btn btn-primary w-100 mb-2">
+                            🔍 Search
+                        </button>
+
+                        <a href="{% url 'dashboard_home' %}"
+                           class="btn btn-outline-secondary w-100">
+                            ↻ Reset Filters
+                        </a>
+                    </div>
+
+                </div>
+
+            </form>
+
+        </div>
+
+        <!-- Events Table -->
+        <div class="card-body p-0">
+
+            <div class="table-responsive">
+
+                <table class="table table-hover align-middle mb-0">
+
+                    <thead class="table-light">
+                        <tr>
+                            <th class="ps-3">#</th>
+                            <th>Event Name</th>
+                            <th>Category</th>
+                            <th>Date</th>
+                            <th>Location</th>
+                            <th>Status</th>
+                            <th class="text-center">Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        {% for event in upcoming_events %}
+
+                            <tr>
+
+                                <td class="ps-3">
+                                    {{ forloop.counter }}
+                                </td>
+
+                                <td>
+                                    <div class="fw-semibold">
+                                        {{ event.event_name }}
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <span class="badge bg-info text-dark">
+                                        {{ event.get_category_display }}
+                                    </span>
+                                </td>
+
+                                <td>
+                                    {{ event.event_date|date:"d M Y" }}
+                                    <br>
+                                    <small class="text-muted">
+                                        {{ event.start_time|time:"h:i A" }}
+                                    </small>
+                                </td>
+
+                                <td>
+                                    {{ event.location }}
+                                </td>
+
+                                <td>
+
+                                    {% if event.event_status == 'Upcoming' %}
+                                        <span class="badge bg-primary">
+                                            Upcoming
+                                        </span>
+
+                                    {% elif event.event_status == 'Ongoing' %}
+                                        <span class="badge bg-success">
+                                            Ongoing
+                                        </span>
+
+                                    {% elif event.event_status == 'Completed' %}
+                                        <span class="badge bg-secondary">
+                                            Completed
+                                        </span>
+
+                                    {% elif event.event_status == 'Inactive' %}
+                                        <span class="badge bg-danger">
+                                            Inactive
+                                        </span>
+
+                                    {% else %}
+                                        <span class="badge bg-secondary">
+                                            {{ event.event_status }}
+                                        </span>
+                                    {% endif %}
+
+                                </td>
+
+                                <td class="text-center">
+    <div class="d-flex justify-content-center gap-2">
+
+        <!-- View Details Button -->
+        <a href="{% url 'event_detail' event.id %}"
+           class="btn btn-sm btn-outline-success">
+            👁️ View
+        </a>
+
+        <!-- Edit Button -->
+        <a href="/admin/events/event/{{ event.id }}/change/"
+           class="btn btn-sm btn-outline-primary">
+            ✏️ Edit
+        </a>
+
+    </div>
+</td>
+                            </tr>
+
+                        {% empty %}
+
+                            <tr>
+                                <td colspan="7" class="text-center py-5">
+
+                                    <div class="mb-2" style="font-size: 35px;">
+                                        📭
+                                    </div>
+
+                                    <h6 class="fw-bold">
+                                        No Events Found
+                                    </h6>
+
+                                    <p class="text-muted mb-3">
+                                        No events match your search or selected category.
+                                    </p>
+
+                                    <a href="{% url 'dashboard_home' %}"
+                                       class="btn btn-outline-primary btn-sm">
+                                        Clear Search
+                                    </a>
+
+                                </td>
+                            </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+        <!-- Events Table Footer -->
+        <div class="card-footer bg-white text-muted small">
+            Showing up to 20 events matching your filters.
+        </div>
+
+    </div>
+
+    <!-- Recent Registrations -->
+    <div class="card border-0 shadow-sm mb-4">
+
+        <div class="card-header bg-white py-3">
+            <h5 class="fw-bold mb-1">👥 Recent Registrations</h5>
+            <p class="text-muted small mb-0">
+                Latest event registration records
+            </p>
+        </div>
+
+        <div class="card-body p-0">
+
+            <div class="table-responsive">
+
+                <table class="table table-hover align-middle mb-0">
+
+                    <thead class="table-light">
+                        <tr>
+                            <th class="ps-3">#</th>
+                            <th>User</th>
+                            <th>Event</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        {% for registration in recent_registrations %}
+
+                            <tr>
+
+                                <td class="ps-3">
+                                    {{ forloop.counter }}
+                                </td>
+
+                                <td>
+                                    <div class="fw-semibold">
+                                        {{ registration.user.username }}
+                                    </div>
+
+                                    <small class="text-muted">
+                                        {{ registration.user.email|default:"No email" }}
+                                    </small>
+                                </td>
+
+                                <td>
+                                    {{ registration.event.event_name }}
+                                </td>
+
+                                <td>
+
+                                    {% if registration.status == 'registered' %}
+                                        <span class="badge bg-success">
+                                            Registered
+                                        </span>
+
+                                    {% elif registration.status == 'cancelled' %}
+                                        <span class="badge bg-danger">
+                                            Cancelled
+                                        </span>
+
+                                    {% else %}
+                                        <span class="badge bg-secondary">
+                                            {{ registration.status|title }}
+                                        </span>
+                                    {% endif %}
+
+                                </td>
+
+                            </tr>
+
+                        {% empty %}
+
+                            <tr>
+                                <td colspan="4" class="text-center py-4">
+                                    <p class="text-muted mb-0">
+                                        No registrations available yet.
+                                    </p>
+                                </td>
+                            </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Dashboard Footer -->
+    <div class="text-center text-muted small py-3">
+        DevEvent Event Management System
+    </div>
+
+</div>
+
+{% endblock %}

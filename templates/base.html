@@ -1,0 +1,236 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}DevEvent - Event Management{% endblock %}</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+        <div class="container">
+
+            <a class="navbar-brand fw-bold fs-3" href="{% url 'home' %}">
+                Dev<span class="text-primary">Event</span>
+            </a>
+
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#mainNavbar"
+                aria-controls="mainNavbar"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNavbar">
+
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}#events">Events</a>
+                    </li>
+
+                    {% if user.is_authenticated %}
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'my_registrations' %}">
+                                My Registrations
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <span class="nav-link text-info">
+                                Hi, {{ user.username }}
+                            </span>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{% url 'logout' %}" class="btn btn-danger rounded-pill px-4">
+                                Logout
+                            </a>
+                        </li>
+
+                    {% else %}
+
+                        <li class="nav-item">
+                            <a href="{% url 'login' %}" class="nav-link">
+                                Login
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{% url 'register' %}" class="btn btn-primary rounded-pill px-4">
+                                Sign Up
+                            </a>
+                        </li>
+
+                    {% endif %}
+
+                </ul>
+
+            </div>
+
+        </div>
+    </nav>
+
+
+    <!-- MESSAGES -->
+    <div class="container mt-3">
+
+        {% if messages %}
+
+            {% for message in messages %}
+
+                <div class="alert alert-info alert-dismissible fade show" role="alert">
+
+                    {{ message }}
+
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="alert"
+                        aria-label="Close">
+                    </button>
+
+                </div>
+
+            {% endfor %}
+
+        {% endif %}
+
+    </div>
+
+
+    <!-- PAGE CONTENT -->
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="bg-dark text-white pt-5 pb-3 mt-5">
+
+        <div class="container">
+
+            <div class="row g-4">
+
+                <div class="col-md-5">
+
+                    <h3 class="fw-bold">
+                        Dev<span class="text-primary">Event</span>
+                    </h3>
+
+                    <p class="text-light">
+                        Discover exciting events, learn new skills,
+                        and connect with people through DevEvent.
+                    </p>
+
+                </div>
+
+
+                <div class="col-md-3">
+
+                    <h5 class="fw-bold mb-3">Quick Links</h5>
+
+                    <ul class="list-unstyled">
+
+                        <li class="mb-2">
+                            <a href="{% url 'home' %}" class="text-white text-decoration-none">
+                                Home
+                            </a>
+                        </li>
+
+                        <li class="mb-2">
+                            <a href="{% url 'home' %}#events" class="text-white text-decoration-none">
+                                Events
+                            </a>
+                        </li>
+
+                        {% if user.is_authenticated %}
+
+                            <li class="mb-2">
+                                <a href="{% url 'my_registrations' %}" class="text-white text-decoration-none">
+                                    My Registrations
+                                </a>
+                            </li>
+
+                        {% else %}
+
+                            <li class="mb-2">
+                                <a href="{% url 'login' %}" class="text-white text-decoration-none">
+                                    Login
+                                </a>
+                            </li>
+
+                            <li class="mb-2">
+                                <a href="{% url 'register' %}" class="text-white text-decoration-none">
+                                    Sign Up
+                                </a>
+                            </li>
+
+                        {% endif %}
+
+                    </ul>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <h5 class="fw-bold mb-3">Explore DevEvent</h5>
+
+                    <p class="text-light">
+                        Find events that match your interests
+                        and register online.
+                    </p>
+
+                    <a href="{% url 'home' %}#events" class="btn btn-primary rounded-pill px-4">
+                        Explore Events →
+                    </a>
+
+                </div>
+
+            </div>
+
+            <hr class="border-secondary mt-4">
+
+            <div class="text-center">
+
+                <p class="text-light mb-1">
+                    © 2026 DevEvent. All Rights Reserved.
+                </p>
+
+                <small class="text-secondary">
+                    Designed and developed with Django.
+                </small>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
