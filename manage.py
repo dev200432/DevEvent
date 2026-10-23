@@ -17,11 +17,6 @@ def main():
         ) from exc
     execute_from_command_line(sys.argv)
 
-import os
-from flask import Flask
-
-app = Flask(__name__)
 
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))
-    manage.run(host='0.0.0.0', port=port)
+    main()
