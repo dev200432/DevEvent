@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% block title %}About Us | DevEvent Events{% endblock %}
+{% block content %}
+    <section class="relative py-32 bg-cover bg-center flex items-center justify-center" style="background-image: linear-gradient(rgba(10,10,10,0.8), rgba(10,10,10,0.9)), url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=2000&q=80');">
+        <div class="text-center max-w-3xl mx-auto px-6 pt-10">
+            <span class="text-gold-400 uppercase tracking-[0.3em] text-xs font-semibold block mb-3">Our Heritage</span>
+            <h1 class="font-['Playfair_Display'] text-4xl md:text-6xl font-bold mb-6">About DevEvent Events</h1>
+            <p class="text-gray-300 text-base md:text-lg font-light">
+                A legacy of creative excellence, impeccable execution, and uncompromising luxury.
+            </p>
+        </div>
+    </section>
+
+    <section class="py-24 bg-dark-900">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <span class="text-gold-400 uppercase tracking-widest text-xs font-bold block mb-3">The Genesis</span>
+                <h2 class="font-['Playfair_Display'] text-3xl md:text-5xl font-bold leading-tight mb-6">
+                    Turning Extraordinary Visions Into Timeless Reality
+                </h2>
+                <p class="text-gray-400 leading-relaxed mb-6 font-light">
+                    Founded with a passion for transcendent design and flawless production, DevEvent Events specializes in luxury weddings, corporate galas, and milestone celebrations.
+                </p>
+                <p class="text-gray-400 leading-relaxed mb-8 font-light">
+                    Our planners, stage designers, and coordinators work together so every event feels effortless, elegant, and unforgettable.
+                </p>
+                <div class="grid grid-cols-3 gap-6 pt-4 border-t border-gray-800">
+                    <div>
+                        <h3 class="font-['Playfair_Display'] text-3xl font-bold text-gold-400 mb-1">10+</h3>
+                        <p class="text-xs text-gray-400">Years of Mastery</p>
+                    </div>
+                    <div>
+                        <h3 class="font-['Playfair_Display'] text-3xl font-bold text-gold-400 mb-1">150+</h3>
+                        <p class="text-xs text-gray-400">Events Delivered</p>
+                    </div>
+                    <div>
+                        <h3 class="font-['Playfair_Display'] text-3xl font-bold text-gold-400 mb-1">25+</h3>
+                        <p class="text-xs text-gray-400">Creative Specialists</p>
+                    </div>
+                </div>
+            </div>
+            <div class="relative">
+                <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1000&q=80" alt="About DevEvent" class="rounded-3xl shadow-2xl border border-gold-500/20 object-cover w-full h-[500px]">
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-dark-800">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-gold-400 uppercase tracking-widest text-xs font-bold block mb-3">Our Core Pillars</span>
+                <h2 class="font-['Playfair_Display'] text-3xl md:text-5xl font-bold">The DevEvent Standard</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-dark-900 border border-gray-800 p-8 rounded-2xl shadow-xl">
+                    <div class="w-14 h-14 rounded-full bg-gold-500/25 border border-gold-500 flex items-center justify-center text-gold-400 text-xl font-bold mb-6">
+                        <i class="fa-solid fa-gem"></i>
+                    </div>
+                    <h3 class="font-['Playfair_Display'] text-2xl font-bold mb-3">Uncompromising Elegance</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed font-light">
+                        Every detail from decor and lighting to guest hospitality is curated for refined presentation.
+                    </p>
+                </div>
+
+                <div class="bg-dark-900 border border-gray-800 p-8 rounded-2xl shadow-xl">
+                    <div class="w-14 h-14 rounded-full bg-gold-500/25 border border-gold-500 flex items-center justify-center text-gold-400 text-xl font-bold mb-6">
+                        <i class="fa-solid fa-chess-knight"></i>
+                    </div>
+                    <h3 class="font-['Playfair_Display'] text-2xl font-bold mb-3">Flawless Execution</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed font-light">
+                        Structured timelines and on-ground coordination keep every function smooth and stress-free.
+                    </p>
+                </div>
+
+                <div class="bg-dark-900 border border-gray-800 p-8 rounded-2xl shadow-xl">
+                    <div class="w-14 h-14 rounded-full bg-gold-500/25 border border-gold-500 flex items-center justify-center text-gold-400 text-xl font-bold mb-6">
+                        <i class="fa-solid fa-handshake"></i>
+                    </div>
+                    <h3 class="font-['Playfair_Display'] text-2xl font-bold mb-3">Bespoke Personalization</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed font-light">
+                        We tailor themes, venues, and experiences around your personal style and occasion.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

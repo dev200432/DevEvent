@@ -1,0 +1,233 @@
+{% extends "base.html" %}
+{% block title %}DevEvent Events | Luxury Event Planning & Production{% endblock %}
+{% block content %}
+    <section class="relative min-h-screen flex items-center justify-center bg-cover bg-center pt-20" style="background-image: linear-gradient(rgba(10,10,10,0.7), rgba(10,10,10,0.85)), url('https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=2000&q=80');">
+        <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
+            <span class="text-gold-400 uppercase tracking-[0.3em] text-sm md:text-base font-semibold block mb-4">Luxury Event Production & Design House</span>
+            <h1 class="font-['Playfair_Display'] text-4xl sm:text-6xl md:text-7xl font-bold tracking-wide leading-tight mb-6">
+                Crafting Unforgettable <span class="italic text-gold-400 font-normal">Celebrations</span>
+            </h1>
+            <p class="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed mb-10">
+                From bespoke royal weddings to high-profile corporate galas, we curate extraordinary experiences with meticulous attention to detail and timeless elegance.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="{% url 'contact' %}" class="w-full sm:w-auto bg-gold-500 text-dark-900 font-bold px-8 py-4 rounded-full hover:bg-gold-400 transition tracking-wider uppercase text-sm shadow-xl shadow-gold-500/20">
+                    Plan Your Event
+                </a>
+                <a href="{% url 'services' %}" class="w-full sm:w-auto border border-gold-500 text-gold-400 font-bold px-8 py-4 rounded-full hover:bg-gold-500 hover:text-dark-900 transition tracking-wider uppercase text-sm">
+                    Explore Services
+                </a>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce hidden md:block">
+            <a href="#featured" class="text-gold-400 text-xl"><i class="fa-solid fa-chevron-down"></i></a>
+        </div>
+    </section>
+
+    <section id="featured" class="py-24 bg-dark-800">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <span class="text-gold-400 uppercase tracking-widest text-xs font-bold block mb-3">Our Philosophy</span>
+                <h2 class="font-['Playfair_Display'] text-3xl md:text-5xl font-bold leading-tight mb-6">
+                    Redefining Luxury Through Impeccable Artistry
+                </h2>
+                <p class="text-gray-400 leading-relaxed mb-6">
+                    DevEvent Events is a premier event planning and production house. Our team of visionary designers, meticulous producers, and hospitality experts bring dreams to life with uncompromising sophistication.
+                </p>
+                <div class="grid grid-cols-2 gap-6 pt-4 border-t border-gray-700 mb-8">
+                    <div>
+                        <h3 class="font-['Playfair_Display'] text-3xl font-bold text-gold-400 mb-1">150+</h3>
+                        <p class="text-sm text-gray-400">Luxury Events Executed</p>
+                    </div>
+                    <div>
+                        <h3 class="font-['Playfair_Display'] text-3xl font-bold text-gold-400 mb-1">100%</h3>
+                        <p class="text-sm text-gray-400">Client Satisfaction</p>
+                    </div>
+                </div>
+                <a href="{% url 'about' %}" class="inline-flex items-center gap-3 text-gold-400 font-semibold tracking-wider uppercase text-xs hover:text-white transition">
+                    Discover Our Story <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="relative">
+                <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1000&q=80" alt="Luxury Event" class="rounded-2xl shadow-2xl border border-gold-500/20 object-cover w-full h-[450px]">
+                <div class="absolute -bottom-6 -left-6 bg-dark-900 border border-gold-500/30 p-6 rounded-xl hidden sm:block shadow-2xl">
+                    <p class="font-['Playfair_Display'] italic text-gold-400 text-lg">"Excellence is in the smallest details."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-dark-900">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+                <div>
+                    <span class="text-gold-400 uppercase tracking-widest text-xs font-bold block mb-3">What We Offer</span>
+                    <h2 class="font-['Playfair_Display'] text-3xl md:text-5xl font-bold">Curated Services</h2>
+                </div>
+                <div class="mt-4 md:mt-0">
+                    <a href="{% url 'services' %}" class="text-gold-400 text-xs font-bold uppercase tracking-wider flex items-center gap-2 hover:gap-3 transition-all">
+                        View All Services <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-dark-800 border border-gray-800 rounded-2xl overflow-hidden group hover:border-gold-500 transition duration-300 shadow-xl">
+                    <div class="h-60 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80" alt="Weddings" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-['Playfair_Display'] text-2xl font-bold mb-3 group-hover:text-gold-400 transition">Royal Weddings</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            From majestic destination weddings to intimate palace celebrations, we design breathtaking matrimonial experiences tailored to your vision.
+                        </p>
+                        <a href="{% url 'services' %}" class="text-gold-400 text-xs font-bold uppercase tracking-wider flex items-center gap-2 hover:gap-3 transition-all">
+                            Learn More <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-dark-800 border border-gray-800 rounded-2xl overflow-hidden group hover:border-gold-500 transition duration-300 shadow-xl">
+                    <div class="h-60 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=800&q=80" alt="Corporate" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-['Playfair_Display'] text-2xl font-bold mb-3 group-hover:text-gold-400 transition">Corporate Galas</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            Elevate your brand presence with prestigious corporate summits, product launches, award ceremonies, and high-level dinners.
+                        </p>
+                        <a href="{% url 'services' %}" class="text-gold-400 text-xs font-bold uppercase tracking-wider flex items-center gap-2 hover:gap-3 transition-all">
+                            Learn More <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-dark-800 border border-gray-800 rounded-2xl overflow-hidden group hover:border-gold-500 transition duration-300 shadow-xl">
+                    <div class="h-60 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=80" alt="Private Parties" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-['Playfair_Display'] text-2xl font-bold mb-3 group-hover:text-gold-400 transition">Private Celebrations</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            Exquisite milestone birthdays, anniversaries, and VIP social gatherings designed with entertainment, decor, and hospitality.
+                        </p>
+                        <a href="{% url 'services' %}" class="text-gold-400 text-xs font-bold uppercase tracking-wider flex items-center gap-2 hover:gap-3 transition-all">
+                            Learn More <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-dark-800">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-gold-400 uppercase tracking-widest text-xs font-bold block mb-3">Portfolio Highlights</span>
+                <h2 class="font-['Playfair_Display'] text-3xl md:text-5xl font-bold mb-4">Captured Moments</h2>
+                <p class="text-gray-400 text-sm">A glimpse into our world of magnificent productions and breathtaking designs.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+                <div class="overflow-hidden rounded-xl h-72 group relative shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1545232979-fbf802c2f03f?auto=format&fit=crop&w=600&q=80" alt="Gallery 1" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-dark-900/70 opacity-0 group-hover:opacity-100 transition flex items-center justify-center p-4 text-center">
+                        <span class="text-gold-400 font-semibold uppercase tracking-wider text-xs">Royal Wedding Reception</span>
+                    </div>
+                </div>
+                <div class="overflow-hidden rounded-xl h-72 group relative shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=600&q=80" alt="Gallery 2" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-dark-900/70 opacity-0 group-hover:opacity-100 transition flex items-center justify-center p-4 text-center">
+                        <span class="text-gold-400 font-semibold uppercase tracking-wider text-xs">Executive Gala Dinner</span>
+                    </div>
+                </div>
+                <div class="overflow-hidden rounded-xl h-72 group relative shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=600&q=80" alt="Gallery 3" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-dark-900/70 opacity-0 group-hover:opacity-100 transition flex items-center justify-center p-4 text-center">
+                        <span class="text-gold-400 font-semibold uppercase tracking-wider text-xs">Floral Stage Production</span>
+                    </div>
+                </div>
+                <div class="overflow-hidden rounded-xl h-72 group relative shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=600&q=80" alt="Gallery 4" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-dark-900/70 opacity-0 group-hover:opacity-100 transition flex items-center justify-center p-4 text-center">
+                        <span class="text-gold-400 font-semibold uppercase tracking-wider text-xs">Destination Event</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <a href="{% url 'gallery' %}" class="inline-block border border-gold-500 text-gold-400 font-bold px-8 py-4 rounded-full hover:bg-gold-500 hover:text-dark-900 transition tracking-wider uppercase text-xs">
+                    Explore Full Gallery
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-dark-900">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-gold-400 uppercase tracking-widest text-xs font-bold block mb-3">Testimonials</span>
+                <h2 class="font-['Playfair_Display'] text-3xl md:text-5xl font-bold">Words From Our Clients</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-dark-800 border border-gray-800 p-8 rounded-2xl shadow-xl">
+                    <div class="text-gold-400 text-3xl mb-4"><i class="fa-solid fa-quote-left"></i></div>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-6 font-light">
+                        "DevEvent Events turned our wedding into a dream celebration. Every detail from decor to guest hospitality was executed smoothly."
+                    </p>
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 rounded-full bg-gold-500/20 border border-gold-500 flex items-center justify-center text-gold-400 font-bold">AK</div>
+                        <div>
+                            <h4 class="font-semibold text-sm">Aarav & Kamyani</h4>
+                            <p class="text-xs text-gray-500">Destination Wedding, Udaipur</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-dark-800 border border-gray-800 p-8 rounded-2xl shadow-xl">
+                    <div class="text-gold-400 text-3xl mb-4"><i class="fa-solid fa-quote-left"></i></div>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-6 font-light">
+                        "Their corporate event management was top-tier. Guests were impressed by the stage lighting, sound, and seamless coordination."
+                    </p>
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 rounded-full bg-gold-500/20 border border-gold-500 flex items-center justify-center text-gold-400 font-bold">RM</div>
+                        <div>
+                            <h4 class="font-semibold text-sm">Rajesh Malhotra</h4>
+                            <p class="text-xs text-gray-500">Corporate Gala, Mumbai</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-dark-800 border border-gray-800 p-8 rounded-2xl shadow-xl">
+                    <div class="text-gold-400 text-3xl mb-4"><i class="fa-solid fa-quote-left"></i></div>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-6 font-light">
+                        "Unmatched professionalism and creative brilliance. They made our anniversary celebration truly memorable."
+                    </p>
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 rounded-full bg-gold-500/20 border border-gold-500 flex items-center justify-center text-gold-400 font-bold">SP</div>
+                        <div>
+                            <h4 class="font-semibold text-sm">Simran & Vikram</h4>
+                            <p class="text-xs text-gray-500">Anniversary Night, Jaipur</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-gradient-to-r from-dark-800 via-dark-700 to-dark-800 border-t border-b border-gray-800">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <h2 class="font-['Playfair_Display'] text-3xl md:text-5xl font-bold mb-6">Ready to Create Something Extraordinary?</h2>
+            <p class="text-gray-300 max-w-xl mx-auto mb-8 text-sm md:text-base font-light">
+                Let's collaborate to bring your vision to life with premier planning and breathtaking design.
+            </p>
+            <a href="{% url 'contact' %}" class="inline-block bg-gold-500 text-dark-900 font-bold px-10 py-4 rounded-full hover:bg-gold-400 transition uppercase tracking-wider text-sm shadow-2xl shadow-gold-500/20">
+                Book Your Consultation Now
+            </a>
+        </div>
+    </section>
+{% endblock %}

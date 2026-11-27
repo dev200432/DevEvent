@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% block title %}Our Services | DevEvent Events{% endblock %}
+{% block content %}
+    <section class="relative py-32 bg-cover bg-center flex items-center justify-center" style="background-image: linear-gradient(rgba(10,10,10,0.8), rgba(10,10,10,0.9)), url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=2000&q=80');">
+        <div class="text-center max-w-3xl mx-auto px-6 pt-10">
+            <span class="text-gold-400 uppercase tracking-[0.3em] text-xs font-semibold block mb-3">Tailored Offerings</span>
+            <h1 class="font-['Playfair_Display'] text-4xl md:text-6xl font-bold mb-6">Our Luxury Services</h1>
+            <p class="text-gray-300 text-base md:text-lg font-light">
+                Comprehensive event production, creative styling, and flawless management curated for discerning clients.
+            </p>
+        </div>
+    </section>
+
+    <section class="py-24 bg-dark-900">
+        <div class="max-w-7xl mx-auto px-6 space-y-20">
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center bg-dark-800 border border-gray-800 rounded-3xl p-8 md:p-12 shadow-2xl">
+                <div>
+                    <span class="text-gold-400 uppercase tracking-widest text-xs font-bold block mb-2">01 / Matrimonial</span>
+                    <h2 class="font-['Playfair_Display'] text-3xl md:text-4xl font-bold mb-6">Royal Destination Weddings</h2>
+                    <p class="text-gray-400 leading-relaxed mb-6">
+                        We orchestrate memorable destination weddings across heritage palaces, resorts, and estates. From venue selection and decor design to guest hospitality and stage production, we handle every detail.
+                    </p>
+                    <ul class="space-y-3 text-sm text-gray-300 mb-8">
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-gold-400"></i> Venue sourcing & coordination</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-gold-400"></i> Custom thematic decor & floral design</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-gold-400"></i> Artist management & live entertainment</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-gold-400"></i> Guest logistics & concierge support</li>
+                    </ul>
+                    <a href="{% url 'contact' %}" class="inline-block bg-gold-500 text-dark-900 font-bold px-8 py-3 rounded-full hover:bg-gold-400 transition uppercase tracking-wider text-xs">
+                        Inquire For Weddings
+                    </a>
+                </div>
+                <div class="overflow-hidden rounded-2xl shadow-xl h-[380px]">
+                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=80" alt="Royal Wedding" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center bg-dark-800 border border-gray-800 rounded-3xl p-8 md:p-12 shadow-2xl">
+                <div class="order-2 lg:order-1 overflow-hidden rounded-2xl shadow-xl h-[380px]">
+                    <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=1000&q=80" alt="Corporate Gala" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                </div>
+                <div class="order-1 lg:order-2">
+                    <span class="text-gold-400 uppercase tracking-widest text-xs font-bold block mb-2">02 / Enterprise</span>
+                    <h2 class="font-['Playfair_Display'] text-3xl md:text-4xl font-bold mb-6">Executive Corporate Galas</h2>
+                    <p class="text-gray-400 leading-relaxed mb-6">
+                        Elevate brand events with product launches, summits, award nights, and executive dinners. We combine clean stage production, lighting, and sound with structured event flow.
+                    </p>
+                    <ul class="space-y-3 text-sm text-gray-300 mb-8">
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-gold-400"></i> Product launch staging & brand zones</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-gold-400"></i> Audio-visual, lighting & sound setup</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-gold-400"></i> Speaker & VIP guest coordination</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-gold-400"></i> End-to-end on-ground management</li>
+                    </ul>
+                    <a href="{% url 'contact' %}" class="inline-block bg-gold-500 text-dark-900 font-bold px-8 py-3 rounded-full hover:bg-gold-400 transition uppercase tracking-wider text-xs">
+                        Inquire For Corporate Events
+                    </a>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center bg-dark-800 border border-gray-800 rounded-3xl p-8 md:p-12 shadow-2xl">
+                <div>
+                    <span class="text-gold-400 uppercase tracking-widest text-xs font-bold block mb-2">03 / Social</span>
+                    <h2 class="font-['Playfair_Display'] text-3xl md:text-4xl font-bold mb-6">VIP Private Celebrations</h2>
+                    <p class="text-gray-400 leading-relaxed mb-6">
+                        Whether celebrating milestone birthdays, anniversaries, or private evening gatherings, we curate custom themes, decor, music, and dining experiences.
+                    </p>
+                    <ul class="space-y-3 text-sm text-gray-300 mb-8">
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-gold-400"></i> Thematic styling & custom setups</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-gold-400"></i> Catering & beverage curation</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-gold-400"></i> DJ, performers & entertainment</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-gold-400"></i> Complete setup & event supervision</li>
+                    </ul>
+                    <a href="{% url 'contact' %}" class="inline-block bg-gold-500 text-dark-900 font-bold px-8 py-3 rounded-full hover:bg-gold-400 transition uppercase tracking-wider text-xs">
+                        Inquire For Private Parties
+                    </a>
+                </div>
+                <div class="overflow-hidden rounded-2xl shadow-xl h-[380px]">
+                    <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1000&q=80" alt="Private Celebration" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                </div>
+            </div>
+
+        </div>
+    </section>
+{% endblock %}

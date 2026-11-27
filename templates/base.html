@@ -1,0 +1,141 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}DevEvent Events | Luxury Event Planning & Production{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            400: '#d4af37',
+                            500: '#c5a059',
+                            600: '#b08d45',
+                        },
+                        dark: {
+                            900: '#0a0a0a',
+                            800: '#141414',
+                            700: '#1f1f1f',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body class="bg-dark-900 text-gray-100 font-['Plus_Jakarta_Sans',sans-serif] selection:bg-gold-500 selection:text-black">
+
+    {% if messages %}
+        <div class="fixed top-24 right-5 z-50 space-y-2 max-w-md">
+            {% for message in messages %}
+                <div class="bg-gold-500 text-black px-6 py-4 rounded-xl shadow-2xl flex items-center justify-between space-x-4 border border-gold-400">
+                    <span class="font-semibold text-sm">{{ message }}</span>
+                    <button onclick="this.parentElement.remove()" class="text-black font-bold text-lg hover:text-white transition">&times;</button>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <header id="navbar" class="fixed top-0 left-0 w-full z-40 transition-all duration-300 bg-dark-900/90 backdrop-blur-md border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="{% url 'index' %}" class="font-['Playfair_Display'] text-2xl md:text-3xl font-bold tracking-widest text-gold-400">
+                DEV<span class="text-white">EVENT</span>
+            </a>
+
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-wider uppercase">
+                <a href="{% url 'index' %}" class="transition {% if active_page == 'index' %}text-gold-400 border-b-2 border-gold-400 pb-1{% else %}hover:text-gold-400 text-gray-300{% endif %}">Home</a>
+                <a href="{% url 'about' %}" class="transition {% if active_page == 'about' %}text-gold-400 border-b-2 border-gold-400 pb-1{% else %}hover:text-gold-400 text-gray-300{% endif %}">About Us</a>
+                <a href="{% url 'services' %}" class="transition {% if active_page == 'services' %}text-gold-400 border-b-2 border-gold-400 pb-1{% else %}hover:text-gold-400 text-gray-300{% endif %}">Services</a>
+                <a href="{% url 'gallery' %}" class="transition {% if active_page == 'gallery' %}text-gold-400 border-b-2 border-gold-400 pb-1{% else %}hover:text-gold-400 text-gray-300{% endif %}">Gallery</a>
+                <a href="{% url 'contact' %}" class="transition {% if active_page == 'contact' %}text-gold-400 border-b-2 border-gold-400 pb-1{% else %}hover:text-gold-400 text-gray-300{% endif %}">Contact</a>
+            </nav>
+
+            <div class="hidden md:block">
+                <a href="{% url 'contact' %}" class="bg-gold-500 text-dark-900 font-bold px-6 py-3 rounded-full hover:bg-gold-400 transition tracking-wider uppercase text-xs shadow-lg shadow-gold-500/20">
+                    Book Consultation
+                </a>
+            </div>
+
+            <button id="menu-btn" class="md:hidden text-gold-400 text-2xl focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-dark-800 border-b border-gray-800 px-6 py-6 space-y-4 shadow-2xl">
+            <a href="{% url 'index' %}" class="block text-lg {% if active_page == 'index' %}text-gold-400 font-semibold{% else %}text-gray-300 hover:text-gold-400{% endif %} transition">Home</a>
+            <a href="{% url 'about' %}" class="block text-lg {% if active_page == 'about' %}text-gold-400 font-semibold{% else %}text-gray-300 hover:text-gold-400{% endif %} transition">About Us</a>
+            <a href="{% url 'services' %}" class="block text-lg {% if active_page == 'services' %}text-gold-400 font-semibold{% else %}text-gray-300 hover:text-gold-400{% endif %} transition">Services</a>
+            <a href="{% url 'gallery' %}" class="block text-lg {% if active_page == 'gallery' %}text-gold-400 font-semibold{% else %}text-gray-300 hover:text-gold-400{% endif %} transition">Gallery</a>
+            <a href="{% url 'contact' %}" class="block text-lg {% if active_page == 'contact' %}text-gold-400 font-semibold{% else %}text-gray-300 hover:text-gold-400{% endif %} transition">Contact</a>
+            <div class="pt-4">
+                <a href="{% url 'contact' %}" class="block text-center bg-gold-500 text-dark-900 font-bold px-6 py-3 rounded-full uppercase text-xs">
+                    Book Consultation
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="bg-dark-900 border-t border-gray-800 py-16">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+            <div class="space-y-4">
+                <div class="font-['Playfair_Display'] text-2xl font-bold tracking-widest text-gold-400">
+                    DEV<span class="text-white">EVENT</span>
+                </div>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    Crafting extraordinary luxury weddings, corporate galas, and bespoke celebrations with elegance and precision.
+                </p>
+            </div>
+            <div>
+                <h4 class="font-['Playfair_Display'] text-lg font-semibold text-gold-400 mb-4">Quick Links</h4>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="{% url 'index' %}" class="hover:text-gold-400 transition">Home</a></li>
+                    <li><a href="{% url 'about' %}" class="hover:text-gold-400 transition">About Us</a></li>
+                    <li><a href="{% url 'services' %}" class="hover:text-gold-400 transition">Services</a></li>
+                    <li><a href="{% url 'gallery' %}" class="hover:text-gold-400 transition">Gallery</a></li>
+                    <li><a href="{% url 'contact' %}" class="hover:text-gold-400 transition">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-['Playfair_Display'] text-lg font-semibold text-gold-400 mb-4">Curated Services</h4>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="{% url 'services' %}" class="hover:text-gold-400 transition">Royal Destination Weddings</a></li>
+                    <li><a href="{% url 'services' %}" class="hover:text-gold-400 transition">Executive Corporate Galas</a></li>
+                    <li><a href="{% url 'services' %}" class="hover:text-gold-400 transition">VIP Private Celebrations</a></li>
+                    <li><a href="{% url 'services' %}" class="hover:text-gold-400 transition">Stage & Decor Production</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-['Playfair_Display'] text-lg font-semibold text-gold-400 mb-4">Connect With Us</h4>
+                <p class="text-sm text-gray-400 mb-4">Follow us for event styling inspiration and highlights.</p>
+                <div class="flex space-x-4 text-gray-300 text-lg">
+                    <a href="#" class="w-10 h-10 rounded-full bg-dark-800 border border-gray-700 flex items-center justify-center hover:text-gold-400 hover:border-gold-500 transition"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-dark-800 border border-gray-700 flex items-center justify-center hover:text-gold-400 hover:border-gold-500 transition"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-dark-800 border border-gray-700 flex items-center justify-center hover:text-gold-400 hover:border-gold-500 transition"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 pt-8 border-t border-gray-800/80 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500">
+            <p>&copy; 2026 DevEvent Events. Built with Django, MySQL, HTML, CSS & JS.</p>
+            <div class="flex space-x-6 mt-4 sm:mt-0">
+                <a href="#" class="hover:text-gold-400 transition">Privacy Policy</a>
+                <a href="#" class="hover:text-gold-400 transition">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/main.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
